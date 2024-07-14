@@ -141,13 +141,13 @@ function App() {
       </div>
 
       {/* contact */}
-      <div className="w-full mt-36 md:px-10 flex gap-5 px-4 bg-[#222831]">
-        <div className="w-[30%] -mt-10">
+      <div className="w-full md:py-0 py-10 mt-36 md:px-10 flex gap-5 px-4 bg-[#222831]">
+        <div className="w-[30%] -mt-10 md:block hidden">
           <img src="/me.jpeg" className="rounded-t-xl" />
         </div>
-        <div className="flex flex-col w-[70%]">
+        <div className="flex flex-col md:w-[70%] w-full">
           <div className="flex flex-col gap-2 my-auto">
-            <div className="flex gap-3">
+            <div className="flex flex-wrap gap-3">
               <input
                 className="p-1 rounded-md border-none outline-none px-3 text-gray-700"
                 placeholder="Your Name..."
@@ -165,7 +165,7 @@ function App() {
               Send
             </button>
           </div>
-          <div className="flex justify-center gap-10 p-3">
+          <div className="flex flex-wrap justify-center gap-10 p-3">
             <Link
               to="https://wa.me/201023455435"
               className="flex gap-2 items-center cursor-pointer underline underline-offset-4 transition-all hover:no-underline"
