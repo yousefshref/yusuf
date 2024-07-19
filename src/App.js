@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function App() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col overflow-x-hidden">
       {/* header */}
       <div className="w-full text-sm flex justify-between gap-5 items-center bg-[#222831] py-4 px-3">
         <h1 className="font-bold">Y.S</h1>
@@ -138,6 +138,20 @@ function App() {
             Service...
           </p>
         </div>
+      </div>
+
+      {/* slides for my faked projects */}
+      <div className="flex md:mt-10 mt-20 md:flex-row flex-col-reverse justify-center items-center md:gap-20 gap-10 p-5 rounded-md from-indigo-950/30 to-transparent bg-gradient-to-t">
+        <div className="md:w-[50%] w-full text-center">
+          <h2 className="text-3xl font-bold">Managment System....</h2>
+          <h4 className="text-2xl font-bold -me-[17vw]">سيستم اداراة</h4>
+          <p className="text-sm mt-2 text-start">
+            systems for more productivity, more security, and more efficiency.
+            <br />
+            سيستم ادارة للمزيد من الانتاجية، الحماية، والتأثير
+          </p>
+        </div>
+        <img src="/exwand.png" className="rounded-xl md:w-[50%] w-full" />
       </div>
 
       {/* contact */}
