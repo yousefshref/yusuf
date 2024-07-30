@@ -91,13 +91,13 @@ function App() {
               </p>
             </div>
             <div className="flex flex-col w-[50%]">
-              <strong>My Mission</strong>
-              <p className="text-xs">
-                You receive your project in the best and fastest way possible.
-                There are no errors and there is no slowness. You will be
-                comfortable in your work or your own business... because time is
-                money.
-              </p>
+              <strong>SKILLS</strong>
+              <ul className="text-xs flex flex-col gap-2 mt-1">
+                <li>Software Development</li>
+                <li>IT Management</li>
+                <li>Full Stack - React / Django</li>
+                <li>Python Developer</li>
+              </ul>
             </div>
           </div>
         </div>
