@@ -89,9 +89,12 @@ function App() {
             <p className="tracking-widest">SOFTWARE DEVELOPER</p>
           </div>
           <div className="flex p-3 tracking-wider gap-4 w-full justify-start">
-            <button className="p-2 px-5 bg-white text-black font-medium">
-              Explore Now
-            </button>
+            <a
+              href="/My Resume.pdf"
+              className="p-2 px-5 bg-white text-black font-medium"
+            >
+              Download CV
+            </a>
             <div className="flex items-center gap-2">
               <span>
                 <BiPlay />
