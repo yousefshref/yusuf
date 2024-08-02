@@ -1,10 +1,56 @@
-import { BiPlay, BiVideoPlus } from "react-icons/bi";
+import { useEffect, useRef, useState } from "react";
+import { BiPlay } from "react-icons/bi";
 import { BsInstagram, BsWhatsapp } from "react-icons/bs";
 import { CgMenuLeft } from "react-icons/cg";
 import { FaFacebook } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 function App() {
+  const [isInSection, setIsInSection] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInSection(entry.isIntersecting);
+      },
+      {
+        root: null, // Use the viewport as the container
+        rootMargin: "-100px",
+        threshold: 0.1, // Trigger when at least 10% of the section is visible
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  // services
+  const services = [
+    {
+      name: "System Software",
+      describe: "Develoing systems for businesses, factories, and stores.",
+      icon: "/icons/software.png",
+    },
+    {
+      name: "Web/Mobiole Apps Development",
+      describe: "Developing apps for Android, iOS, and Web.",
+      icon: "/icons/app-development.png",
+    },
+    {
+      name: "Custom Software",
+      describe: "Developing custom software based on your needs.",
+      icon: "/icons/build.png",
+    },
+  ];
+
   return (
     <div className="flex flex-col overflow-x-hidden">
       {/* header */}
@@ -22,6 +68,7 @@ function App() {
           </div>
         </div>
       </div>
+
       {/* landing */}
       <div className="flex gap-5 relative flex-row h-[100%]">
         <div className="md:hidden justify-center block absolute right-0 left-0 h-full w-full from-[#76ABAE]/35 to-transparent bg-gradient-to-t"></div>
@@ -67,28 +114,22 @@ function App() {
           <br />
           <div>
             <p className="tracking-wider">
-              Before anything, you must know{" "}
-              <span className="text-[#76ABAE]">who I am</span>, what I can{" "}
-              <span className="text-[#76ABAE]">give you</span>, and{" "}
-              <span className="text-[#76ABAE]">
-                what my mission is towards you
-              </span>
-              ... I will explain to you in detail, and you must be careful in
-              choosing who will carry out the work for you.
+              Software Engineer with experience since approximately 2020.
+              <br />
             </p>
           </div>
           <br />
           <br />
           <div className="flex gap-4 justify-between">
             <div className="flex flex-col w-[50%]">
-              <strong>About Me</strong>
-              <p className="text-xs">
-                I am a web developer with experience since approximately 2019. I
-                have worked on many projects such as (reservations, electronic
-                stores, organizing systems for companies or factories, complex
-                scripts, etc.), and this has given me many ideas and experiences
-                that I can apply with you in the best way.
-              </p>
+              <strong>PROJECTS</strong>
+              <div className="text-xs flex flex-col">
+                <p>- Booking System (Russian Academy)</p>
+                <p>- E-commerce System and Online Store (Vinitto Store)</p>
+                <p>- E-Learning School System (El Nozha School)</p>
+                <p>- البان زاهر (لم يتكم يكتمل)</p>
+                <p>- Etc ...</p>
+              </div>
             </div>
             <div className="flex flex-col w-[50%]">
               <strong>SKILLS</strong>
@@ -106,8 +147,24 @@ function App() {
         </div>
       </div>
 
+      {/* Contacts */}
+      <div className="flex gap-20 mt-20 justify-center text-6xl">
+        <a target="_blank" href="https://wa.me/+201023455435/">
+          <BsWhatsapp className="cursor-pointer transition-all hover:text-green-400" />
+        </a>
+        <a target="_blank" href="https://www.instagram.com/_yusuf__com/">
+          <BsInstagram className="cursor-pointer transition-all hover:text-indigo-400" />
+        </a>
+        <a
+          target="_blank"
+          href="https://www.facebook.com/profile.php?id=100091743741602/"
+        >
+          <FaFacebook className="cursor-pointer transition-all hover:text-blue-400" />
+        </a>
+      </div>
+
       {/* my work */}
-      <div className="flex mt-36 md:flex-row flex-col gap-5 p-4 md:px-10 px-4">
+      <div className="flex mt-20 md:flex-row flex-col gap-5 p-4 md:px-10 px-4">
         <div className="md:w-[35%] w-full">
           <div className="relative overflow-hidden rounded-xl bg-violet-300 h-fit flex flex-col justify-center">
             <div className="absolute h-full w-full z-30 from-[#76ABAE]/35 to-[#222831]/30 top-0 right-0 bg-gradient-to-t"></div>
@@ -140,8 +197,12 @@ function App() {
         </div>
       </div>
 
-      {/* slides for my faked projects */}
-      <div className="flex md:mt-10 mt-20 md:flex-row flex-col-reverse justify-center items-center md:gap-20 gap-10 p-5 rounded-md from-indigo-950/30 to-transparent bg-gradient-to-t">
+      {/* managment system */}
+      <div
+        className={`
+          flex overflow-hidden h-[500px] md:mt-10 mt-20 md:flex-row transition-all flex-col-reverse justify-center items-center md:gap-20 gap-10 p-5 rounded-md from-indigo-950/30 to-transparent bg-gradient-to-t
+        `}
+      >
         <div className="md:w-[50%] w-full text-center">
           <h2 className="text-3xl font-bold">Managment System....</h2>
           <h4 className="text-2xl font-bold -me-[17vw]">سيستم اداراة</h4>
@@ -151,7 +212,34 @@ function App() {
             سيستم ادارة للمزيد من الانتاجية، الحماية، والتأثير
           </p>
         </div>
-        <img src="/exwand.png" className="rounded-xl md:w-[50%] w-full" />
+        <img
+          src="/exwand.png"
+          className={`rounded-xl transition-all md:w-[50%] w-full ${
+            isInSection ? "scale-[140%]" : "scale-100"
+          }`}
+        />
+      </div>
+
+      <div className="p-5">
+        <div
+          ref={sectionRef}
+          className="animated-gradient rounded-lg text-zinc-700 justify-around p-3 flex flex-wrap gap-5 md:mt-20 mt-10"
+        >
+          {services?.map((service, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center justify-center rounded-lg gap-2 md:w-[32%] w-full border p-2"
+            >
+              <div className="flex flex-wrap gap-2 items-center text-center">
+                <img src={service?.icon} alt="" className="w-[40%] mx-auto" />
+                <div className="flex flex-col w-full justify-center gap-1">
+                  <h3 className="text-xl font-bold">{service?.name}</h3>
+                  <p className="text-xs text-zinc-100">{service?.describe}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* contact */}
