@@ -11,7 +11,7 @@ const Header = () => {
                     {/* <li>About</li>
                     <li>Services</li>
                     <li>Contanct</li> */}
-                    {/* <li className='text-red-500'>STILL UNDER DEVELOPMENT</li> */}
+                    <li className='text-red-500'>STILL UNDER DEVELOPMENT</li>
                 </ul>
             </nav>
 
